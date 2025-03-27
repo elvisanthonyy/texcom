@@ -17,7 +17,7 @@ const lapName = document.querySelectorAll('.laptop_name');
 const lapDate = document.querySelectorAll('.laptop_release_date');
 const lapDetails = document.querySelectorAll('.laptop_device_information');
 const lapImage = document.querySelectorAll('.laptop_url');
-//display elements
+const filterLap = document.querySelector('#filter_laptops')
 const display = document.querySelector('.device');
 const displayName = document.querySelector('.display_name');
 const displayInfo = document.querySelector('.display_information');
@@ -25,15 +25,34 @@ const displayImg = document.querySelector('.display_image');
 //to close display
 const cancel = document.querySelector('.cancel');
 const clickMe = document.querySelector('.click_me');
+const links = document.querySelectorAll('.links')
 //for mobile menu 
-const navMenu = document.querySelector('.nav-items');
+const navMenu = document.querySelector('.nav_total_menu');
 const hamMenu = document.querySelector('.ham_menu');
-
+const navMenuOverlay = document.querySelector('.nav_menu_overlay')
+const itemDisplayOverlay = document.querySelector('.overlay')
+const bodyVar = document.querySelector('body')
+//function for removing menu
+function removeMenu () {
+    navMenu.classList.remove('open')
+    bodyVar.classList.remove('active')
+};
 //for toggling the menu 
 hamMenu.addEventListener('click', ()=> {
     navMenu.classList.toggle('open')
-})
+    bodyVar.classList.toggle('active')
+});
 
+//remove menu when body is clicked
+navMenuOverlay.addEventListener('click', ()=> {
+    removeMenu()
+});
+//removing active clas on click
+Array.from(links).forEach(link => {
+    link.addEventListener('click', ()=> {
+        removeMenu()
+    })
+});
 Array.from(viewBtn).forEach((e) => {
     e.addEventListener('click', () => {
 
@@ -49,12 +68,20 @@ clickMe.addEventListener('click', () => {
 });
 
 
-//for canceling display for device info
-cancel.addEventListener('click', () => {
+// function to remove product display overlay
+function removeProdOverlay() {
     display.classList.remove('active')
     document.body.style.overflowY = "scroll"
+}
+//for canceling display for device info
+cancel.addEventListener('click', () => {
+    removeProdOverlay()
 });
 
+//remove product display when body is clicked 
+itemDisplayOverlay.addEventListener('click', ()=> {
+    removeProdOverlay()
+})
 //creating array out of the devices
 const itemArray = Array.from(item);
 const lapItemArray = Array.from(lapItem);
@@ -121,3 +148,12 @@ categories.addEventListener('change', (e) => {
     }
 });
 
+filterLap.addEventListener('change', (e)=> {
+    lapItemArray.forEach(lapItem => {
+        if (lapItem.classList.contains(e.target.value)){
+            lapItem.style.display = 'flex'
+        } else {
+            lapItem.style.display = 'none' 
+        }
+    })
+})

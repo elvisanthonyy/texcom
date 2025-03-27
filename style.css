@@ -10,7 +10,7 @@
   margin-top: 150px;
   text-align: center;
   padding: 30px 0px;
-  border-top: 3px solid rgb(75, 75, 75);
+  border-top: 2px solid rgb(75, 75, 75);
 }
 
 .laptop_item, .item {
@@ -74,15 +74,19 @@ body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
+body.active {
+  overflow: hidden;
+}
+
 /*nav*/
 nav {
-  z-index: 7;
+  z-index: 8;
   height: 80px;
   width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 5%;
+  padding: 20px 8%;
   position: fixed;
   top: 0;
   left: 50%;
@@ -92,8 +96,6 @@ nav {
   background-color: white;
   border-radius: 300px;
   margin: 30px auto;
-  -webkit-backdrop-filter: blur(20px);
-          backdrop-filter: blur(20px);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.062), 0 4px 25px 0 rgba(0, 0, 0, 0.075);
   animation: nav 0.8s ease-in;
 }
@@ -121,7 +123,7 @@ nav {
   color: rgb(22, 22, 22);
   font-size: 1em;
   font-weight: 300;
-  margin: 0;
+  margin-left: 80px;
 }
 
 .links:hover {
@@ -137,11 +139,15 @@ img {
      object-fit: contain;
 }
 
+.nav_overlay {
+  display: none;
+}
+
 .nav-items {
-  width: 350px;
+  width: 400px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .logo {
@@ -205,7 +211,6 @@ main {
   left: 0;
   top: 0;
   opacity: 0.7;
-  background-color: black;
   z-index: 9;
   background-image: url(Back.jpg);
   background-position: center;
@@ -259,6 +264,7 @@ main {
   bottom: 100px;
   left: 50%;
   font-size: 1.1em;
+  border: none;
   transform: translateX(-50%);
 }
 
@@ -315,22 +321,22 @@ main {
 .web_info {
   display: flex;
   flex-direction: column;
-  height: 600px;
+  height: 500px;
   width: 80%;
   position: relative;
   border-radius: 20px;
-  background-image: url(info_lap.jpg);
+  background-image: url(laptwo.jpeg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   margin-top: 80px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.062), 0 4px 25px 0 rgba(0, 0, 0, 0.075);
+  background-color: rgba(255, 255, 255, 0.068);
   z-index: 4;
   overflow: hidden;
   align-items: center;
   padding: 80px;
-  text-align: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .info_overlay {
@@ -338,56 +344,102 @@ main {
   height: 100%;
   width: 100%;
   top: 0;
+  background-color: black;
   z-index: 5;
   opacity: 0.1;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
 }
 
 .info_heading {
   width: 80%;
+  z-index: 3;
   margin: 0px auto;
-  margin-top: 70px;
+  margin-top: 50px;
   text-align: center;
-  color: rgb(20, 20, 20);
+  color: rgb(41, 41, 41);
   font-size: 1.7em;
-  z-index: 8;
   padding-top: 20px;
-  border-top: 3px solid rgb(75, 75, 75);
+  border-top: 2px solid rgb(75, 75, 75);
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+.slide {
+  display: flex;
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  animation: slide 15s linear infinite;
 }
 
 .service {
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  overflow: hidden;
   width: -moz-fit-content;
   width: fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  padding: 20px;
+  padding: 5px;
   text-align: left;
+  background-color: rgba(255, 255, 255, 0.692);
+  border-radius: 20px;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+
+.service:hover > .slide {
+  animation-play-state: paused;
 }
 
 .service_items {
   z-index: 8;
   display: flex;
-  justify-content: center;
   align-items: center;
-  border-radius: 5px;
-  -webkit-backdrop-filter: blur(20px);
-          backdrop-filter: blur(20px);
   color: rgb(0, 0, 0);
   height: 40px;
-  width: 250px;
-  margin: 20px;
+  min-width: 80px;
+  width: 150px;
+  margin: 70px 0px;
+  margin: 10px;
+  font-size: 1.2em;
+  justify-content: center;
   cursor: pointer;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.63);
   transition: all 0.4s ease-in;
 }
 
-.service_items:hover {
-  transform: scale(110%);
-  background-color: rgba(255, 255, 255, 0.89);
-  transition: all 0.4s ease-in;
+/*.service_items:nth-child(){
+  border: none;
+}*/
+.info_display_items {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.display_design_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 20px;
+  right: 20px;
+  overflow: hidden;
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  border-radius: 50%;
+  z-index: 6;
+}
+
+.display_design_image img {
+  height: 150px;
 }
 
 /*phone products*/
@@ -494,6 +546,17 @@ button:hover {
   position: relative;
 }
 
+.products_heading {
+  display: flex;
+}
+
+.products_heading select {
+  border: 1px solid black;
+  margin-left: 20px;
+  height: 25px;
+  border-radius: 5px;
+}
+
 .laptop_image img {
   height: 170px;
   -o-object-fit: cover;
@@ -529,6 +592,7 @@ button:hover {
   top: 0px;
   cursor: pointer;
   right: 0;
+  font-weight: 300;
   color: blue;
 }
 
@@ -576,7 +640,7 @@ button:hover {
 .display_information {
   font-size: 0.8em;
   margin-top: 20px;
-  width: 450px;
+  width: 80%;
   text-align: left;
 }
 
@@ -590,7 +654,6 @@ button:hover {
   overflow: hidden;
   flex-shrink: 0;
   margin-bottom: 20px;
-  position: sticky;
   top: 0px;
 }
 
@@ -612,6 +675,7 @@ button:hover {
 .display_top {
   position: sticky;
   top: 0;
+  right: 0;
   width: 100%;
 }
 
@@ -659,6 +723,22 @@ footer p {
   .laptop_image img {
     height: 140px;
   }
+  .display_design_image:nth-child(2) {
+    display: none;
+  }
+  .display_design_image {
+    width: 350px;
+    height: 350px;
+  }
+  .service_items {
+    height: 30px;
+    font-size: 0.8em;
+    margin: 0;
+  }
+  .web_info {
+    height: 350px;
+    border-radius: 10px;
+  }
 }
 /*smaller tab*/
 @media screen and (width <= 900px) {
@@ -691,18 +771,43 @@ footer p {
     z-index: 9;
     cursor: pointer;
   }
+  .nav_total_menu {
+    display: none;
+    height: 100vh;
+    width: 115%;
+    position: absolute;
+    top: -20px;
+    right: -6%;
+  }
+  .nav_menu_overlay {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.7;
+  }
   .nav-items {
     position: absolute;
-    display: none;
+    padding-top: 80px;
+    display: grid;
     z-index: 7;
-    flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    grid-template-rows: 80px 80px 80px;
     height: 110vh;
-    top: -30px;
-    right: -10%;
+    top: 0;
+    right: 0;
     background-color: white;
     width: 60%;
-    opacity: 0;
+    opacity: 1;
+    text-align: center;
+  }
+  .links {
+    margin: 0;
   }
   .intro {
     height: 70vh;
@@ -710,7 +815,7 @@ footer p {
   .intro_items {
     padding: 0 50%;
   }
-  .nav-items.open {
+  .nav_total_menu.open {
     display: flex;
     opacity: 1;
   }
@@ -720,11 +825,12 @@ footer p {
   }
   .web_info {
     border: none;
+    width: 80%;
+    border-radius: 10px;
     padding: 40px;
     display: flex;
     flex-direction: column;
-    height: -moz-fit-content;
-    height: fit-content;
+    height: 250px;
     justify-content: center;
     align-items: center;
   }
@@ -734,12 +840,15 @@ footer p {
   }
   .service {
     justify-content: center;
+    border-radius: 5px;
+    width: -moz-fit-content;
+    width: fit-content;
   }
   .service_items {
     font-size: 0.7em;
-    width: 150px;
+    width: 70px;
     height: 20px;
-    margin: 10px;
+    margin: 0px;
   }
   .product-items {
     width: 100%;
