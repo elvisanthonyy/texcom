@@ -9,7 +9,7 @@
   margin-top: 150px;
   text-align: center;
   padding: 30px 0px;
-  border-top: 2px solid rgb(75, 75, 75);
+  border-top: 1px solid rgb(75, 75, 75);
 }
 
 %item {
@@ -19,9 +19,10 @@
   flex-direction: column;
   flex-shrink: 0;
   align-items: center;
+  justify-content: center;
   background-color: rgb(255, 255, 255);
-  border: 2px solid rgb(75, 75, 75);
-  height: 380px;
+  border: 1px solid rgb(75, 75, 75);
+  height: 430px;
   width: 430px;
   margin: 20px;
   border-radius: 15px;
@@ -108,14 +109,28 @@ nav {
   width: 40px;
 }
 
+.ham_menu.active .burger:nth-child(1) {
+  transform: rotate(-45deg) translate(-10px);
+  transition: all 0.2s ease-in;
+}
+.ham_menu.active .burger:nth-child(2) {
+  opacity: 0;
+  transition: all 0.2s ease-in;
+}
+.ham_menu.active .burger:nth-child(3) {
+  transform: rotate(45deg) translate(-9px);
+  transition: all 0.2s ease-in;
+}
+
 .burger {
   display: block;
   flex-shrink: 0;
   height: 3px;
   width: 23px;
-  background-color: black;
+  background-color: rgb(32, 32, 32);
   margin: 2px;
   border-radius: 5px;
+  transition: all 0.2s ease-in;
 }
 .links {
   text-decoration: none;
@@ -135,7 +150,7 @@ img {
   height: 22px;
   object-fit: contain;
 }
-.nav_overlay{
+.nav_overlay {
   display: none;
 }
 .nav-items {
@@ -176,23 +191,20 @@ main {
   height: 105vh;
   width: 100%;
   flex-shrink: 0;
-  background-color: rgba(255, 255, 255, 0.938);
+  background-color: rgba(0, 0, 0, 0.938);
   display: flex;
   background-image: url(pexels-xexusdesigner-777001.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  /*background-attachment: fixed;*/
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(20px);
   overflow: hidden;
   cursor: pointer;
   position: relative;
   top: -80px;
   left: 0;
-  backdrop-filter: blur(1000px);
 }
 
 .intro_overlay {
@@ -202,7 +214,7 @@ main {
   left: 0;
   top: 0;
   opacity: 0.7;
-  z-index: 9;
+  z-index: 7;
   background-image: url(Back.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -322,7 +334,7 @@ main {
   background-color: rgba(255, 255, 255, 0.068);
   z-index: 4;
   overflow: hidden;
-  align-items:center;
+  align-items: center;
   padding: 80px;
   justify-content: center;
   overflow: hidden;
@@ -348,7 +360,7 @@ main {
   color: rgb(41, 41, 41);
   font-size: 1.7em;
   padding-top: 20px;
-  border-top:2px solid rgb(75, 75, 75);
+  border-top: 1px solid rgb(75, 75, 75);
 }
 
 @keyframes slide {
@@ -369,7 +381,7 @@ main {
   display: flex;
   justify-content: center;
   overflow: hidden;
-  width:fit-content;
+  width: fit-content;
   height: fit-content;
   padding: 5px;
   text-align: left;
@@ -421,7 +433,6 @@ main {
 .display_design_image img {
   height: 150px;
 }
-
 
 /*phone products*/
 .product-items {
@@ -559,31 +570,33 @@ button:hover {
 }
 .laptop_item {
   @extend %item;
-  
 }
 
 .laptop_image img {
-    height: 170px;
-    object-fit: cover;
-}
-
-.laptop_details {
+  height: 170px;
+  object-fit: cover;
 }
 
 .laptop_name {
+  margin: 10px;
 }
 
 .laptop_release_date {
+  font-size: 0.8em;
+  color: rgb(58, 58, 58);
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .laptop_view {
 }
 
-.laptop_btns button {
-  @extend %btns;
+.laptop_device_information {
+  display: none;
 }
 
-.laptop_information {
+.laptop_btns button {
+  @extend %btns;
 }
 /*display device information*/
 
@@ -594,11 +607,17 @@ button:hover {
   width: 100%;
   height: 100vh;
   z-index: 30;
-  display: none;
+  top: -1000px;
+  left: 0;
+  opacity: 0;
+  transition: all 0.5s ease-in;
 }
 
 .device.active {
-  display: block;
+  display: flex;
+  opacity: 1;
+  left: 0;
+  top: 0;
   transition: all 0.5s ease-in;
 }
 .overlay {
@@ -606,7 +625,7 @@ button:hover {
   width: 100%;
   height: 100%;
   background-color: black;
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 .cancel {
@@ -653,8 +672,8 @@ button:hover {
   width: 16px;
 }
 
-.active {
-  display: flex;
+.device.active {
+  left: 0;
   transition: all 0.5s ease-in;
 }
 /*info containers*/
@@ -670,8 +689,9 @@ button:hover {
   justify-content: center;
   align-items: center;
   height: 120px;
-  width: 130px;
-  border-left: 3px solid black;
+  min-width: 130px;
+  width: fit-content;
+  border-left: 2px solid black;
   overflow: hidden;
   flex-shrink: 0;
   margin-bottom: 20px;
@@ -713,9 +733,9 @@ footer {
 }
 
 footer p {
-    border-bottom: 2px solid white;
-    font-size: 0.8em;
-    padding: 20px 0px;
+  border-bottom: 2px solid white;
+  font-size: 0.8em;
+  padding: 20px 0px;
 }
 /*small tab scree*/
 
@@ -734,45 +754,44 @@ footer p {
   .image img {
     height: 140px;
   }
-    .laptop_item {
-      width: 350px;
-      height: 350px;
-    }
-  
-    .laptop_image img {
-      height: 140px;
-    }
+  .laptop_item {
+    width: 350px;
+    height: 350px;
+  }
 
-    .display_design_image:nth-child(2) {
-      display: none;
-    }
+  .laptop_image img {
+    height: 140px;
+  }
 
-    .display_design_image {
-      width: 350px;
-      height: 350px;
-    }
-    .service_items {
-      height: 30px;
-      font-size: 0.8em;
-      margin: 0;
-    
-    }
-    .web_info {
-      height: 350px;
-      border-radius: 10px;
-    }
+  .display_design_image:nth-child(2) {
+    display: none;
+  }
+
+  .display_design_image {
+    width: 350px;
+    height: 350px;
+  }
+  .service_items {
+    height: 30px;
+    font-size: 0.8em;
+    margin: 0;
+  }
+  .web_info {
+    height: 350px;
+    border-radius: 10px;
+  }
 }
 
 /*smaller tab*/
 @media screen and (width <= 900px) {
-  .item{
+  .item {
     width: 85%;
-    height: auto;
+    height: 430px;
   }
-    .laptop_item {
-      width: 85%;
-      height: auto;
-    }
+  .laptop_item {
+    width: 85%;
+    height: 430px;
+  }
 }
 /*phonescreen*/
 @media screen and (width <= 700px) {
@@ -797,15 +816,17 @@ footer p {
   }
 
   .nav_total_menu {
-    display: none;
+    display: block;
     height: 100vh;
     width: 115%;
     position: absolute;
     top: -20px;
-    right: -6%;
+    opacity: 0;
+    right: -120%;
+    transition: all 0.5s ease;
   }
 
-  .nav_menu_overlay{
+  .nav_menu_overlay {
     display: flex;
     position: absolute;
     top: 0;
@@ -814,12 +835,12 @@ footer p {
     height: 100%;
     width: 100%;
     background-color: rgb(0, 0, 0);
-    opacity: 0.7;
+    opacity: 0.5;
   }
   .nav-items {
     position: absolute;
     padding-top: 80px;
-    display:grid;
+    display: grid;
     z-index: 7;
     justify-content: center;
     align-items: center;
@@ -838,17 +859,20 @@ footer p {
   }
   .intro {
     height: 70vh;
-  } 
+  }
 
   .intro_items {
     padding: 0 50%;
   }
   .nav_total_menu.open {
-    display: flex;
+    display: block;
     opacity: 1;
+    top: -20px;
+    right: -6%;
+    transition: all 0.5s ease-in;
   }
 
-  .intro_items{
+  .intro_items {
     transform: scale(70%);
     margin: 0;
   }
@@ -881,7 +905,7 @@ footer p {
     height: 20px;
     margin: 0px;
   }
- 
+
   .product-items {
     width: 100%;
   }
@@ -893,9 +917,9 @@ footer p {
   }
   .products_laptops_cont {
     width: 100%;
-  } 
+  }
 
-  .laptop_item{
+  .laptop_item {
     width: 100%;
   }
   .device_view {

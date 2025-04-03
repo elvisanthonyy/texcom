@@ -36,11 +36,13 @@ const bodyVar = document.querySelector('body')
 function removeMenu () {
     navMenu.classList.remove('open')
     bodyVar.classList.remove('active')
+    hamMenu.classList.remove('active')
 };
 //for toggling the menu 
 hamMenu.addEventListener('click', ()=> {
     navMenu.classList.toggle('open')
     bodyVar.classList.toggle('active')
+    hamMenu.classList.toggle('active')
 });
 
 //remove menu when body is clicked
@@ -103,11 +105,11 @@ itemArray.forEach(ite => {
                 displayImg.src = phoneImage[index].src
                 document.body.style.overflow = "hidden"
             } else {
-                ite.classList.remove('selected')
+                ite.classList.remove('selected');
             }
         }
     })
-});
+})
 
 
 lapItemArray.forEach(lapIte => {
