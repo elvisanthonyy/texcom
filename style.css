@@ -1,13 +1,13 @@
 .products_laptops, .product-items {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: -moz-fit-content;
   height: fit-content;
   padding-bottom: 50px;
-  margin-top: 150px;
+  margin-top: 25px;
   text-align: center;
   padding: 30px 0px;
   border-top: 1px solid rgb(75, 75, 75);
@@ -15,7 +15,7 @@
 
 .laptop_item, .item {
   display: flex;
-  margin-top: 30px;
+  margin: 15px;
   padding: 40px;
   flex-direction: column;
   flex-shrink: 0;
@@ -25,7 +25,6 @@
   border: 1px solid rgb(75, 75, 75);
   height: 430px;
   width: 430px;
-  margin: 20px;
   border-radius: 15px;
   overflow: hidden;
   cursor: pointer;
@@ -41,9 +40,8 @@
   min-height: 350px;
   height: -moz-fit-content;
   height: fit-content;
-  width: 95%;
-  margin: 0px 30px;
-  margin-top: 50px;
+  width: 90%;
+  margin-top: 26px;
 }
 
 .laptop_btns button, .details button {
@@ -342,12 +340,13 @@ main {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-top: 80px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   background-color: rgba(255, 255, 255, 0.068);
   z-index: 4;
   overflow: hidden;
   align-items: center;
-  padding: 80px;
+  padding: 20px;
   justify-content: center;
   overflow: hidden;
 }
@@ -368,7 +367,7 @@ main {
   width: 80%;
   z-index: 3;
   margin: 0px auto;
-  margin-top: 50px;
+  margin-top: 20px;
   text-align: center;
   color: rgb(41, 41, 41);
   font-size: 1.7em;
@@ -420,8 +419,7 @@ main {
   height: 40px;
   min-width: 80px;
   width: 150px;
-  margin: 70px 0px;
-  margin: 10px;
+  margin: 0px 0px;
   font-size: 1.2em;
   justify-content: center;
   cursor: pointer;
@@ -849,6 +847,7 @@ footer p {
   }
   .intro {
     height: 70vh;
+    margin-bottom: 0px;
   }
   .intro_items {
     padding: 0 50%;
@@ -877,6 +876,7 @@ footer p {
   }
   .info_heading {
     font-size: 1em;
+    margin-top: 0px;
     color: black;
   }
   .service {
@@ -898,15 +898,18 @@ footer p {
     width: 100%;
   }
   .item {
-    width: 100%;
+    width: 80%;
   }
   .products_laptops_cont {
     width: 100%;
   }
   .laptop_item {
-    width: 100%;
+    width: 80%;
   }
   .device_view {
     width: 80%;
+  }
+  footer {
+    margin-top: 90px;
   }
 }/*# sourceMappingURL=style.css.map */
